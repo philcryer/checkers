@@ -1,17 +1,7 @@
 #!/bin/bash 
-# Name:		checkers
+# checkers
 #
-# Description: 	a script that checks website availability, throws up a growl/OSD message if down
-#
-# Rational: 	running this script locally via cron every minute sometimes beats other monitors
-#		plus the popup is 'sticky' so it will stay there until you acknowlege it (annoying)
-#		also logs alerts for later review
-#
-# Dependencies: bash, curl
-#		OS X: growl and growlnotifiy 
-#		Linux: osd (linux version coming soon)
-#
-# Source: 	https://github.com/philcryer/checkers
+# See the accompanying README file for full details and usage
 #
 # Distributed under the terms of the BSD License.
 # Copyright (c) 2011 Phil Cryer phil.cryer@gmail.com
