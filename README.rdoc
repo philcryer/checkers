@@ -1,7 +1,7 @@
 = checkers
 
 == Description
-A BASH script that checks website availability and throws up a Growl, or similar OSD message, if down.
+A BASH script that checks website availability and throws up a {Growl}[http://growl.info/], or similar OSD message, if down.
 
 == Rational
 - running this script locally every minute sometimes beats other monitors (Nagios, monit, etc) that rely on being emailed
@@ -10,8 +10,8 @@ A BASH script that checks website availability and throws up a Growl, or similar
 
 == Dependencies
 - bash, curl (all)  
-- growl and growlnotifiy (OS X)
-- Notify OSD (Linux) Linux version coming soon...
+- growl and {growlnotifiy}[http://growl.info/downloads] (OS X)
+- {Notify OSD}[https://wiki.ubuntu.com/NotifyOSD] (Linux) Linux version coming soon...
 
 == Source
 - https://github.com/philcryer/checkers
