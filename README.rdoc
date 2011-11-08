@@ -1,12 +1,12 @@
 = checkers
 
 == Description
-a script that checks website availability, throws up a growl/OSD message if down
+A BASH script that checks website availability and throws up a Growl, or similar OSD message, if down.
 
 == Rational
-- running this script locally via cron every minute sometimes beats other monitors
-- plus the popup is 'sticky' so it will stay there until you acknowlege it
-- also logs alerts for later review
+- running this script locally every minute sometimes beats other monitors (Nagios, monit, etc) that rely on being emailed
+- any site down popup is 'sticky' so it will stay there until you acknowlege it, which is annoying, so it gets your attention
+- logs all alerts with hostname and timestamp for later review
 
 == Dependencies
 - bash, curl (all)  
@@ -15,6 +15,12 @@ a script that checks website availability, throws up a growl/OSD message if down
 
 == Source
 - https://github.com/philcryer/checkers
+
+== Usage
+Once downloaded, run it with the default vaules and see what it does
+- sh checkers
+
+If that worked, edit the file and modify the URLs listed in the ARRAY variable to ones you want checked, then set it as a cronjob and you're done. If you don't like the 'successful' message displaying everytime it's run, simply disable it via the COMPLETED_MESSAGE variable.
 
 == License
 Distributed under the terms of the BSD License.
