@@ -1,0 +1,73 @@
+#!/bin/bash 
+# Name:		checkers
+#
+# Description: 	a script that checks website availability, throws up a growl/OSD message if down
+#
+# Rational: 	running this script locally via cron every minute sometimes beats other monitors
+#		plus the popup is 'sticky' so it will stay there until you acknowlege it (annoying)
+#		also logs alerts for later review
+#
+# Dependencies: bash, curl
+#		OS X: growl and growlnotifiy 
+#		Linux: osd (linux version coming soon)
+#
+# Source: 	https://github.com/philcryer/gists
+#
+# Distributed under the terms of the BSD License.
+# Copyright (c) 2011 Phil Cryer phil.cryer@gmail.com
+# See the accompanying LICENSE file for full details
+
+# define URLs to check here, seperated by a space
+ARRAY=( www.slashdot.org this_random_site.com google.com )
+
+# display a completed message after each run (1=on, 0=off) 
+COMPLETED_MESSAGE="1"
+
+# define PATH for script
+PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+
+# define log file
+LOG="/tmp/checkers.log"
+
+# ensure internet connection and DNS resolution are availble, halt if not
+if eval "ping -c 1 www.google.com > /dev/null"; then
+	touch ${LOG}
+else
+	echo "Failing silently, no internet available"
+	exit 1
+fi
+
+# define a URL to a success and error icon you like
+SUCCESS_ICON="http://www.gettyicons.com/free-icons/123/onebit-2/png/48/tick_48.png"
+ERROR_ICON="http://www.gettyicons.com/free-icons/123/onebit-2/png/48/stop_48.png"
+
+if [ ! -f '/tmp/error_icon.png' ]; then
+	curl -s -o /tmp/error_icon.png ${ERROR_ICON}
+fi
+if [ ! -f '/tmp/success_icon.png' ]; then
+	curl -s -o /tmp/success_icon.png ${SUCCESS_ICON}
+fi
+
+ELEMENTS=${#ARRAY[@]}
+
+# run the loop, testing all URLs listed in ARRAY
+for (( i=0;i<$ELEMENTS;i++)); do
+	RESPONSE=$(curl --write-out %{http_code} --silent --output /dev/null http://${ARRAY[${i}]})
+
+	if [ ${RESPONSE} != "200" ] && [ ${RESPONSE} != "301" ]; then
+		DATE=`date +%T\ %Y/%m/%d`
+		MESSAGE="${ARRAY[${i}]} is DOWN"
+		COMMAND=`growlnotify -s --image /tmp/error_icon.png -t "${MESSAGE}" -m "${DATE}" &`; ${COMMAND} 
+		echo "${DATE} ${MESSAGE}" >> ${LOG}
+	fi
+
+done
+
+# display a successful growl message when complete, if END_MESSAGE="1"
+if [ ${COMPLETED_MESSAGE} == "1" ]; then
+	DATE=`date +%T\ %Y/%m/%d`
+	MESSAGE="Checkers run complete"
+	COMMAND=`growlnotify --image /tmp/success_icon.png -t "${MESSAGE}" -m "${DATE}" &`; ${COMMAND} 
+fi
+
+exit 0
