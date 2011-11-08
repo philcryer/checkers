@@ -3,7 +3,7 @@
 == Description
 A BASH script that checks website availability and throws up a {Growl}[http://growl.info/], or similar OSD message, if down, which looks something like this:
 
-[[link:http://a.yfrog.com/img864/5027/du3z.png]]
+http://a.yfrog.com/img864/5027/du3z.png
 
 == Rational
 - running this script locally every minute sometimes beats other monitors (_Nagios, monit, etc_) that rely on being emailed
