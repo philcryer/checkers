@@ -42,7 +42,7 @@ ELEMENTS=${#ARRAY[@]}
 
 # run the loop, testing all URLs listed in ARRAY
 for (( i=0;i<$ELEMENTS;i++)); do
-	RESPONSE=$(curl --write-out %{http_code} --silent --output /dev/null http://${ARRAY[${i}]})
+	RESPONSE=$(curl --connect-timeout 5 --write-out %{http_code} --silent --output /dev/null http://${ARRAY[${i}]})
 
 	if [ ${RESPONSE} != "200" ] && [ ${RESPONSE} != "301" ]; then
 		DATE=`date +%T\ %Y/%m/%d`
