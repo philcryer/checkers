@@ -21,8 +21,9 @@ Oh noes!
 - https://github.com/philcryer/checkers
 
 == Usage
-Once downloaded, run it with the default values and see what it does
-+sh checkers+
+Once downloaded, run it with the default values to see what it does
+
+sh checkers
 
 If that worked, edit the file and modify the URLs listed in the ARRAY variable to ones you want checked, then set it as a cronjob and you're done. If you don't like the 'successful' message displaying every time it's run, simply disable it via the COMPLETED_MESSAGE variable.
 
