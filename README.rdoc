@@ -11,7 +11,7 @@ A BASH script that checks website availability and throws up a Growl, or similar
 == Dependencies
 - bash, curl (all)  
 - growl and growlnotifiy (OS X)
-- osd (linux) Linux version coming soon...
+- Notify OSD (Linux) Linux version coming soon...
 
 == Source
 - https://github.com/philcryer/checkers
