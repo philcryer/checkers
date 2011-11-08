@@ -18,7 +18,9 @@ a script that checks website availability, throws up a growl/OSD message if down
 
 == License
 Distributed under the terms of the BSD License.
+
 See the accompanying LICENSE file for full details
+
 Copyright (c) 2011 Phil Cryer phil.cryer@gmail.com
 All rights reserved.
 
