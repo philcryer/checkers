@@ -5,7 +5,7 @@ A BASH script that checks website availability and throws up a {Growl}[http://gr
 
 == Rational
 - running this script locally every minute sometimes beats other monitors (Nagios, monit, etc) that rely on being emailed
-- any site down popup is 'sticky' so it will stay there until you acknowlege it, which is annoying, so it gets your attention
+- any site down popup is 'sticky' so it will stay there until you acknowledge it, which is annoying, so it gets your attention
 - logs all alerts with hostname and timestamp for later review
 
 == Dependencies
@@ -17,10 +17,10 @@ A BASH script that checks website availability and throws up a {Growl}[http://gr
 - https://github.com/philcryer/checkers
 
 == Usage
-Once downloaded, run it with the default vaules and see what it does
+Once downloaded, run it with the default values and see what it does
 - sh checkers
 
-If that worked, edit the file and modify the URLs listed in the ARRAY variable to ones you want checked, then set it as a cronjob and you're done. If you don't like the 'successful' message displaying everytime it's run, simply disable it via the COMPLETED_MESSAGE variable.
+If that worked, edit the file and modify the URLs listed in the ARRAY variable to ones you want checked, then set it as a cronjob and you're done. If you don't like the 'successful' message displaying every time it's run, simply disable it via the COMPLETED_MESSAGE variable.
 
 == License
 Distributed under the terms of the BSD License.
