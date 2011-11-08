@@ -5,6 +5,8 @@ A BASH script that checks website availability and throws up a {Growl}[http://gr
 
 http://a.yfrog.com/img864/5027/du3z.png
 
+Oh noes!
+
 == Rational
 - running this script locally every minute sometimes beats other monitors (_Nagios, monit, etc_) that rely on being emailed
 - any site down popup is 'sticky' so it will stay there until you acknowledge it, *which is annoying*, so it gets your attention
@@ -20,7 +22,7 @@ http://a.yfrog.com/img864/5027/du3z.png
 
 == Usage
 Once downloaded, run it with the default values and see what it does
-+sh checkers+
+sh checkers
 
 If that worked, edit the file and modify the URLs listed in the ARRAY variable to ones you want checked, then set it as a cronjob and you're done. If you don't like the 'successful' message displaying every time it's run, simply disable it via the COMPLETED_MESSAGE variable.
 
