@@ -24,12 +24,12 @@ Oh noes!
 == Usage
 Download, give it execute permissions and run it with the default values to see what it does:
 
-chmod +x checkers
-./checkers
+ chmod +x checkers
+ ./checkers
 
 If that worked, edit the file and modify the URLs listed in the ARRAY variable to ones you want checked, then, run it in a loop for debugging:
 
-while true; do /path/to/checkers; sleep 60; done
+ while true; do /path/to/checkers; sleep 60; done
 
 or set it as a cronjob. If you don't like the 'successful' message displaying every time it's run, simply disable it via the COMPLETED_MESSAGE variable.
 
