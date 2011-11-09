@@ -8,6 +8,7 @@
 # See the accompanying LICENSE file for full details
 
 # define URLs to check here, seperated by a space
+#ARRAY=( www.eol.org www.ubio.org www.mbl.edu bibapp.mbl.edu www.lifeviz.org )
 ARRAY=( www.slashdot.org this_random_site.com google.com )
 
 # display a completed message after each run (1=on, 0=off) 
@@ -48,10 +49,27 @@ for (( i=0;i<$ELEMENTS;i++)); do
 		DATE=`date +%T\ %Y/%m/%d`
 		MESSAGE="${ARRAY[${i}]} is DOWN"
 		COMMAND=`growlnotify -s --image /tmp/error_icon.png -t "${MESSAGE}" -m "${DATE}" &`; ${COMMAND} 
+		say -v Alex "ALERT: ${MESSAGE}" &
 		echo "${DATE} ${MESSAGE}" >> ${LOG}
 	fi
 
 done
+
+# example API check, define API_URL and API_STRING to run your own
+#API_URL="www.ubio.org/webservices/service.php?function=taxonFinder&includeLinks=0&freeText=Cantharellus"
+API_STRING="238542"
+if [ ${API_URL} ]; then 
+	RESPONSE=$(curl --connect-timeout 5 --silent --output /tmp/out ${API_URL}) 
+	CHECK=`cat /tmp/out | grep ${API_STRING}`
+
+	if [ ! ${CHECK} ]; then
+		DATE=`date +%T\ %Y/%m/%d`
+		MESSAGE="Taxonfinder is DOWN"
+		COMMAND=`growlnotify -s --image /tmp/error_icon.png -t "${MESSAGE}" -m "${DATE}" &`; ${COMMAND} 
+		say -v Alex "ALERT: ${MESSAGE}" &
+		echo "${DATE} ${MESSAGE}" >> ${LOG}
+	fi 
+fi
 
 # display a successful growl message when complete, if END_MESSAGE="1"
 if [ ${COMPLETED_MESSAGE} == "1" ]; then
