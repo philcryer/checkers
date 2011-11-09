@@ -1,21 +1,27 @@
 = checkers
 == Description
-A BASH script for OS X and Linux (coming soon) that checks the availability of websites and APIs, providing notifications via OSD (Growl, Notify OSD) and voice (say, festival). Example:
+A BASH script for OS X and Linux (coming soon) that checks the availability of websites and APIs, providing notifications via on screen display and voice. Example:
 
 http://a.yfrog.com/img864/5027/du3z.png
 
 Oh noes!
 
 == Rational
-- running this script locally every minute sometimes beats other monitors (Nagios, monit, etc) that rely on being emailed
-- any site down popup is 'sticky' so it will stay there until you acknowledge it, *which is annoying*, so it gets your attention
+- I want the alert of a site down before any user, but I don't check my email every minute
+- running this script locally every minute usually beats other monitors (Nagios, monit, etc) that rely on being emailed
+- any site down popup is 'sticky' so it will stay there until you acknowledge it, *which is annoying*, so it gets your attention - which is good for the ADD in all of us!
 - logs all alerts with hostname and timestamp for later review
 
 == Dependencies
+= General
 - bash
 - curl 
-- {growl}[http://growl.info/downloads] (tested with 1.2.2) and growlnotify (from the _Extras_ folder) (OS X)
-- {Notify OSD}[https://wiki.ubuntu.com/NotifyOSD] (Linux) Linux version coming soon...
+= OS X (10.7)
+- {growl}[http://growl.info/downloads] (tested with 1.2.2) and growlnotify (in the Growl _Extras_ folder)
+- say 
+= Linux (coming soon!)
+- {Notify OSD}[https://wiki.ubuntu.com/NotifyOSD] 
+- {eSpeak][http://espeak.sourceforge.net/] 
 
 == Source
 - https://github.com/philcryer/checkers
