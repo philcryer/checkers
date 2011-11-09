@@ -7,9 +7,9 @@ http://a.yfrog.com/img864/5027/du3z.png
 Oh noes!
 
 == Features 
-- I want the alert of a site down before any user, but I don't check my email every minute
-- running this script locally every minute usually beats other monitors (Nagios, monit, etc) that rely on being emailed
-- any site down popup is 'sticky' so it will stay there until you acknowledge it, *which is annoying*, so it gets your attention - which is good for the ADD in all of us!
+- receive site down alerts before any user 
+- run locally every minute beats other monitors (Nagios, monit, etc) in getting you the alert, since it is instant and doesn't rely on email 
+- site down popups are 'sticky' so it will stay there until you acknowledge it, this is annoying by design since it demands your attention; good for the ADHD in all of us! [Notice: checkers is not FDA approved, avoid long periods of inactivity when using checkers]
 - logs all alerts with hostname and timestamp for later review
 
 == Dependencies
