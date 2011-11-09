@@ -23,7 +23,7 @@ OS X (10.7)
 
 Linux (coming soon!)
 - {Notify OSD}[https://wiki.ubuntu.com/NotifyOSD] 
-- {eSpeak][http://espeak.sourceforge.net/] 
+- {eSpeak}[http://espeak.sourceforge.net/] 
 
 == Source
 - https://github.com/philcryer/checkers
