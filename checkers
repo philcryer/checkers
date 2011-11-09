@@ -1,13 +1,19 @@
 #!/bin/bash 
-# checkers
 #
-# See the accompanying README file for full details and usage
+# checkers - checks the availability of websites and APIs, providing 
+# notifications via OSD and voice 
+#
+# For OS X and Linux (coming soon)
+#
+# For full details and usage see the accompanying README file or 
+# visit https://github.com/philcryer/checkers
 #
 # Distributed under the terms of the BSD License.
 # Copyright (c) 2011 Phil Cryer phil.cryer@gmail.com
 # See the accompanying LICENSE file for full details
+#
 
-# define URLs to check here, seperated by a space
+# define website URLs to check here, seperated by a space
 #ARRAY=( www.eol.org www.ubio.org www.mbl.edu bibapp.mbl.edu www.lifeviz.org )
 ARRAY=( www.slashdot.org this_random_site.com google.com )
 
@@ -24,7 +30,7 @@ LOG="/tmp/checkers.log"
 if eval "ping -c 1 www.google.com > /dev/null"; then
 	touch ${LOG}
 else
-	echo "Failing silently, no internet available"
+	echo "`date +%T\ %Y/%m/%d` no internet available" >> ${LOG}
 	exit 1
 fi
 

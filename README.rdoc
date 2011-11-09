@@ -1,19 +1,20 @@
 = checkers
 
 == Description
-A BASH script that checks website availability and throws up a {Growl}[http://growl.info/], or similar OSD message, if down, which looks something like this:
+A BASH script for OS X and Linux (coming soon) that checks the availability of websites and APIs, providing notifications via OSD (Growl, Notify OSD) and voice (say, festival). Example:
 
 http://a.yfrog.com/img864/5027/du3z.png
 
 Oh noes!
 
 == Rational
-- running this script locally every minute sometimes beats other monitors (_Nagios, monit, etc_) that rely on being emailed
+- running this script locally every minute sometimes beats other monitors (Nagios, monit, etc) that rely on being emailed
 - any site down popup is 'sticky' so it will stay there until you acknowledge it, *which is annoying*, so it gets your attention
 - logs all alerts with hostname and timestamp for later review
 
 == Dependencies
-- bash, curl (all)  
+- bash
+- curl 
 - {growl}[http://growl.info/downloads] (tested with 1.2.2) and growlnotify (from the _Extras_ folder) (OS X)
 - {Notify OSD}[https://wiki.ubuntu.com/NotifyOSD] (Linux) Linux version coming soon...
 
@@ -21,11 +22,16 @@ Oh noes!
 - https://github.com/philcryer/checkers
 
 == Usage
-Once downloaded, run it with the default values to see what it does
+Download, give it execute permissions and run it with the default values to see what it does:
 
-sh checkers
+chmod +x checkers
+./checkers
 
-If that worked, edit the file and modify the URLs listed in the ARRAY variable to ones you want checked, then set it as a cronjob and you're done. If you don't like the 'successful' message displaying every time it's run, simply disable it via the COMPLETED_MESSAGE variable.
+If that worked, edit the file and modify the URLs listed in the ARRAY variable to ones you want checked, then, run it in a loop for debugging:
+
+while true; do /path/to/checkers; sleep 60; done
+
+or set it as a cronjob. If you don't like the 'successful' message displaying every time it's run, simply disable it via the COMPLETED_MESSAGE variable.
 
 == License
 Distributed under the terms of the BSD License.
@@ -34,4 +40,3 @@ See the accompanying LICENSE file for full details
 
 Copyright (c) 2011 Phil Cryer phil.cryer@gmail.com
 All rights reserved.
-
