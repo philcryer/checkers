@@ -1,32 +1,34 @@
 = checkers
-= Description
+== Description
 A BASH script for OS X and Linux (coming soon) that checks the availability of websites and APIs, providing on screen display and voice to announce errors. Example:
 
 http://a.yfrog.com/img864/5027/du3z.png
 
 Oh noes!
 
-= Rational
+== Features 
 - I want the alert of a site down before any user, but I don't check my email every minute
 - running this script locally every minute usually beats other monitors (Nagios, monit, etc) that rely on being emailed
 - any site down popup is 'sticky' so it will stay there until you acknowledge it, *which is annoying*, so it gets your attention - which is good for the ADD in all of us!
 - logs all alerts with hostname and timestamp for later review
 
-= Dependencies
-== General
+== Dependencies
+General
 - bash
 - curl 
-== OS X (10.7)
+
+OS X (10.7)
 - {growl}[http://growl.info/downloads] (tested with 1.2.2) and growlnotify (in the Growl _Extras_ folder)
 - say 
-== Linux (coming soon!)
+
+Linux (coming soon!)
 - {Notify OSD}[https://wiki.ubuntu.com/NotifyOSD] 
 - {eSpeak][http://espeak.sourceforge.net/] 
 
-= Source
+== Source
 - https://github.com/philcryer/checkers
 
-= Usage
+== Usage
 Download, give it execute permissions and run it with the default values to see what it does:
 
  chmod +x checkers
@@ -38,7 +40,7 @@ If that worked, edit the file and modify the URLs listed in the ARRAY variable t
 
 or set it as a cronjob. If you don't like the 'successful' message displaying every time it's run, simply disable it via the COMPLETED_MESSAGE variable.
 
-= License
+== License
 Distributed under the terms of the BSD License.
 
 See the accompanying LICENSE file for full details
