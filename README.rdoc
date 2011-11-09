@@ -14,7 +14,7 @@ Oh noes!
 
 == Dependencies
 - bash, curl (all)  
-- growl and {growlnotifiy}[http://growl.info/downloads] (OS X)
+- {growl}[http://growl.googlecode.com/files/Growl-1.2.2.dmg] and growlnotify (from the _Extras_ folder) (OS X)
 - {Notify OSD}[https://wiki.ubuntu.com/NotifyOSD] (Linux) Linux version coming soon...
 
 == Source
