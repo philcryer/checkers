@@ -1,5 +1,4 @@
 = checkers
-
 == Description
 A BASH script for OS X and Linux (coming soon) that checks the availability of websites and APIs, providing notifications via OSD (Growl, Notify OSD) and voice (say, festival). Example:
 
