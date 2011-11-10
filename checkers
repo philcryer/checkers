@@ -14,8 +14,8 @@
 #
 
 # define website URLs to check here, seperated by a space
-ARRAY=( this_random_site.com www.eol.org www.ubio.org www.mbl.edu bibapp.mbl.edu www.lifeviz.org )
-#ARRAY=( www.slashdot.org this_random_site.com google.com )
+#ARRAY=( this_random_site.com www.eol.org www.ubio.org www.mbl.edu bibapp.mbl.edu www.lifeviz.org )
+ARRAY=( www.slashdot.org this_random_site.com google.com )
 
 # display a completed message after each run (1=on, 0=off) 
 COMPLETED_MESSAGE="1"
@@ -75,7 +75,7 @@ for (( i=0;i<$ELEMENTS;i++)); do
 			growlnotify -s --image /tmp/error_icon.png -t "${MESSAGE}" -m "${DATE}" & 
 			say -v Alex "ALERT: ${MESSAGE}" &
 		elif [[ ${OS} == 'linux' ]]; then
-			notify-send "${MESSAGE}" "${DATE}" -i /tmp/error_icon.png -t 100000 &
+			notify-send "${MESSAGE}" "${DATE}" -i /tmp/error_icon.png -t 100000 -u critical &
 			#espeak
 		fi
 		echo "${DATE} ${MESSAGE}" >> ${LOG}
@@ -84,7 +84,7 @@ for (( i=0;i<$ELEMENTS;i++)); do
 done
 
 # example API check, define API_URL and API_STRING to run your own
-API_URL="www.ubio.org/webservices/service.php?function=taxonFinder&includeLinks=0&freeText=Cantharellus"
+#API_URL="www.ubio.org/webservices/service.php?function=taxonFinder&includeLinks=0&freeText=Cantharellus"
 API_STRING="238542"
 if [ ${API_URL} ]; then 
 	RESPONSE=$(curl --connect-timeout 5 --silent --output /tmp/out ${API_URL}) 
