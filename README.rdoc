@@ -19,7 +19,7 @@ General
 
 Linux 
 - {Notify OSD}[https://wiki.ubuntu.com/NotifyOSD] 
-- {eSpeak}[http://espeak.sourceforge.net/] (support coming soon!)
+- {eSpeak}[http://espeak.sourceforge.net/] (support coming soon)
 
 Mac OS X (10.7)
 - {growl}[http://growl.info/downloads] (tested with 1.2.2) and growlnotify (in the Growl _Extras_ folder)
