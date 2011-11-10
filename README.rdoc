@@ -9,7 +9,7 @@ Oh noes!
 == Features 
 - receive site down alerts before any user 
 - run locally every minute beats other monitors (Nagios, monit, etc) in getting you the alert, since it is instant and doesn't rely on email 
-- site down popups are 'sticky' so they'll stay there until you acknowledge it (note: {broken in Ubuntu}[https://bugs.launchpad.net/ubuntu/+source/notify-osd/+bug/390508]) this is annoying by design since it demands your attention; good for the ADHD in all of us! 
+- site down popups are 'sticky' so they'll stay there until you acknowledge it (note, currently {broken in Ubuntu}[https://bugs.launchpad.net/ubuntu/+source/notify-osd/+bug/390508])
 - logs all alerts with hostname and timestamp for later review
 
 == Dependencies
