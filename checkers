@@ -14,7 +14,7 @@
 #
 
 # define website URLs to check here, seperated by a space
-ARRAY=( www.eol.org www.ubio.org www.mbl.edu bibapp.mbl.edu www.lifeviz.org )
+ARRAY=( this_random_site.com www.eol.org www.ubio.org www.mbl.edu bibapp.mbl.edu www.lifeviz.org )
 #ARRAY=( www.slashdot.org this_random_site.com google.com )
 
 # display a completed message after each run (1=on, 0=off) 
@@ -22,6 +22,23 @@ COMPLETED_MESSAGE="1"
 
 # define PATH for script
 PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+
+# are we running on Linux or OS X?
+function oscheck {
+	OS='unknown'
+	DETECT=`uname`
+	if [[ "$DETECT" == 'Linux' ]]; then
+		OS='linux'
+	elif [[ "$DETECT" == 'Darwin' ]]; then
+		OS='osx'
+	fi
+
+	#if [[ $OS == 'linux' ]]; then
+	#elif [[ $OS == 'osx' ]]; then
+	#fi
+	echo $OS
+}
+oscheck
 
 # define log file
 LOG="/tmp/checkers.log"
@@ -54,8 +71,13 @@ for (( i=0;i<$ELEMENTS;i++)); do
 	if [ ${RESPONSE} != "200" ] && [ ${RESPONSE} != "301" ]; then
 		DATE=`date +%T\ %Y/%m/%d`
 		MESSAGE="${ARRAY[${i}]} is DOWN"
-		COMMAND=`growlnotify -s --image /tmp/error_icon.png -t "${MESSAGE}" -m "${DATE}" &`; ${COMMAND} 
-		say -v Alex "ALERT: ${MESSAGE}" &
+		if [[ ${OS} == 'osx' ]]; then
+			growlnotify -s --image /tmp/error_icon.png -t "${MESSAGE}" -m "${DATE}" & 
+			say -v Alex "ALERT: ${MESSAGE}" &
+		elif [[ ${OS} == 'linux' ]]; then
+			notify-send "${MESSAGE}" "${DATE}" -i /tmp/error_icon.png -t 100000 &
+			#espeak
+		fi
 		echo "${DATE} ${MESSAGE}" >> ${LOG}
 	fi
 
@@ -71,8 +93,13 @@ if [ ${API_URL} ]; then
 	if [ ! ${CHECK} ]; then
 		DATE=`date +%T\ %Y/%m/%d`
 		MESSAGE="Taxonfinder is DOWN"
-		COMMAND=`growlnotify -s --image /tmp/error_icon.png -t "${MESSAGE}" -m "${DATE}" &`; ${COMMAND} 
-		say -v Alex "ALERT: ${MESSAGE}" &
+		if [[ ${OS} == 'osx' ]]; then
+			growlnotify -s --image /tmp/error_icon.png -t "${MESSAGE}" -m "${DATE}" & 
+			say -v Alex "ALERT: ${MESSAGE}" &
+		elif [[ ${OS} == 'linux' ]]; then
+			notify-send "${MESSAGE}" "${DATE}" -i /tmp/error_icon.png -t 100000 &
+			#espeak
+		fi
 		echo "${DATE} ${MESSAGE}" >> ${LOG}
 	fi 
 fi
@@ -81,7 +108,11 @@ fi
 if [ ${COMPLETED_MESSAGE} == "1" ]; then
 	DATE=`date +%T\ %Y/%m/%d`
 	MESSAGE="Checkers run complete"
-	COMMAND=`growlnotify --image /tmp/success_icon.png -t "${MESSAGE}" -m "${DATE}" &`; ${COMMAND} 
+		if [[ ${OS} == 'osx' ]]; then
+			growlnotify -s --image /tmp/success_icon.png -t "${MESSAGE}" -m "${DATE}" & 
+		elif [[ ${OS} == 'linux' ]]; then
+			notify-send "${MESSAGE}" "${DATE}" -i /tmp/success_icon.png -t 5000 &
+			#espeak
+		fi
 fi
-
 exit 0
