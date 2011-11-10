@@ -1,6 +1,6 @@
 = checkers
 == Description
-A BASH script for OS X and Linux (coming soon) that checks the availability of websites and APIs, providing on screen display and voice to announce errors. Example:
+A BASH script for Linux and Mac OS X that checks the availability of websites and APIs, providing on screen display and voice to announce errors. Example:
 
 http://a.yfrog.com/img864/5027/du3z.png
 
@@ -9,7 +9,7 @@ Oh noes!
 == Features 
 - receive site down alerts before any user 
 - run locally every minute beats other monitors (Nagios, monit, etc) in getting you the alert, since it is instant and doesn't rely on email 
-- site down popups are 'sticky' so it will stay there until you acknowledge it, this is annoying by design since it demands your attention; good for the ADHD in all of us! [Notice: checkers is not FDA approved, avoid long periods of inactivity when using checkers]
+- site down popups are 'sticky' so they'll stay there until you acknowledge it (note: {broken in Ubuntu}[https://bugs.launchpad.net/ubuntu/+source/notify-osd/+bug/390508]) this is annoying by design since it demands your attention; good for the ADHD in all of us! 
 - logs all alerts with hostname and timestamp for later review
 
 == Dependencies
@@ -17,13 +17,13 @@ General
 - bash
 - curl 
 
-OS X (10.7)
-- {growl}[http://growl.info/downloads] (tested with 1.2.2) and growlnotify (in the Growl _Extras_ folder)
-- say 
-
-Linux (coming soon!)
+Linux 
 - {Notify OSD}[https://wiki.ubuntu.com/NotifyOSD] 
-- {eSpeak}[http://espeak.sourceforge.net/] 
+- {eSpeak}[http://espeak.sourceforge.net/] (support coming soon!)
+
+Mac OS X (10.7)
+- {growl}[http://growl.info/downloads] (tested with 1.2.2) and growlnotify (in the Growl _Extras_ folder)
+- {say}[https://developer.apple.com/library/mac/#documentation/Darwin/Reference/ManPages/man1/say.1.html] 
 
 == Source
 - https://github.com/philcryer/checkers
